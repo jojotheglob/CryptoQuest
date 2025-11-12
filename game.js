@@ -1,4 +1,5 @@
-// Caesar cipher decryption function
+// Caesar cipher decryption function (We probably don't need this.)
+/*
 function caesarDecrypt(text, shift) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   let result = "";
@@ -17,10 +18,11 @@ function caesarDecrypt(text, shift) {
 
   return result;
 }
-
-function checkAnswer() {
+*/
+//Checks the answer in the answer box against a string given as a parameter.
+function checkAnswer(correctAnswer) {
   const userInput = document.getElementById("answer").value.trim();
-  const correctAnswer = caesarDecrypt("Fdhvdu flskhuv duh ixq!", 3); // shift of 3
+  //const correctAnswer = caesarDecrypt("Fdhvdu flskhuv duh ixq!", 3); // shift of 3
   const feedback = document.getElementById("feedback");
 
   if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
