@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoQuest - Level 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🔐 CryptoQuest</h1>
+    <h2>Level 2: Vignere Cipher</h2>
+    <!--<p id="clue">Decrypt this message (hint: it’s shifted by 3):</p>-->
+    <div class="cipher-box">
+      <p id="cipher">Mdwl wy e opkvgafx qotalv.</p>
+    </div>
+    <input type="text" id="answer" placeholder="Type your answer...">
+    <button onclick="checkAnswer('This is a vigenere cipher.')">Submit</button>
+    <p id="feedback"></p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
