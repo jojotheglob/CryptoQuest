@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoQuest - Level 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🔐 CryptoQuest</h1>
+    <h2>Level x: Stenography</h2>
+    <p id="clue">Stenography is the practice of concealing the presence of a message, within another message.</p>
+    <div class="cipher-box">
+      <p id="cipher" style="color: #1c1c1c;">This message is visible with a highlight.</p>
+    </div>
+    <input type="text" id="answer" placeholder="Type your answer...">
+    <button onclick="checkAnswer('This message is visible with a highlight.')">Submit</button>
+    <p id="feedback"></p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
+<!-- trigger GitHub Pages build -->
