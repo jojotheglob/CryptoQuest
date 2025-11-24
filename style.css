@@ -54,3 +54,25 @@ button:hover {
   border-radius: 8px;
   background: #0a0a0a;
   border: 1px solid #00ffc3;
+.level-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.level-link {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: #0a0a0a;
+  border: 1px solid #00ffc3;
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.level-link:hover {
+  background: #00ffc3;
+  color: #000;
+}
