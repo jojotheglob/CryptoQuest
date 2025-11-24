@@ -66,15 +66,15 @@ button:hover {
 
 /* ===== Honeycomb main menu ===== */
 
-/* Tight little cluster in the middle */
+/* Cluster in the middle */
 .honeycomb {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  column-gap: 0;
-  row-gap: 0;
+  column-gap: 8px;   /* small gap horizontally */
+  row-gap: 0;        /* we'll control vertical spacing with margin-top */
   max-width: 260px;
   margin-left: auto;
   margin-right: auto;
@@ -83,7 +83,7 @@ button:hover {
 /* Hexagon "buttons" styled like dark tiles with neon edges */
 .hex-link {
   position: relative;
-  width: 100px;
+  width: 100px;              /* good size for text */
   aspect-ratio: 1 / 1;
   clip-path: polygon(
     25% 5%,
@@ -98,7 +98,7 @@ button:hover {
   justify-content: center;
   font-weight: bold;
 
-  /* Dark tile look, no borders so no visible seams */
+  /* Dark tile look, no visible borders */
   background: #272b30;
   border: none;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
@@ -107,26 +107,16 @@ button:hover {
   text-decoration: none;
   text-shadow: 0 0 4px rgba(0, 255, 195, 0.5);
 
-  /* slight horizontal overlap so neighbors touch */
-  margin: 0 -8px;
-
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease;
 }
 
-/* TOP row: hex 1 & 2 (default position) */
-
-/* BOTTOM row: hex 3 & 4 — move them up into the gap and slightly left */
+/* Bottom row: nudge up a bit into the gap, but not too far */
 .hex-link:nth-child(3),
 .hex-link:nth-child(4) {
-  margin-top: -26px; /* pulls them up so corners touch top row */
-}
-
-/* Nudge hex 3 horizontally so bottom row sits between 1 & 2 */
-.hex-link:nth-child(3) {
-  margin-left: 22px;
+  margin-top: -14px;   /* closer to top row, but no overlapping text */
 }
 
 .hex-link:visited {
