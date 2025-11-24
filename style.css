@@ -76,3 +76,61 @@ button:hover {
   background: #00ffc3;
   color: #000;
 }
+.game-container {
+  text-align: center;
+  background: #1c1c1c;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,255,200,0.3);
+  width: 90%;
+  max-width: 700px; /* a bit wider to fit the honeycomb */
+}
+
+.honeycomb {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Hexagon buttons */
+.hex-link {
+  position: relative;
+  width: 130px;
+  aspect-ratio: 1 / 1;
+  background: #00ffc3;
+  color: #000;
+  text-decoration: none;
+  clip-path: polygon(
+    25% 5%,
+    75% 5%,
+    100% 50%,
+    75% 95%,
+    25% 95%,
+    0% 50%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-weight: bold;
+}
+
+.hex-link:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0,255,200,0.6);
+  background: #00d1a4;
+}
+
+.hex-label {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.hex-label small {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  opacity: 0.8;
+}
