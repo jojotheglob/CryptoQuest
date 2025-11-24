@@ -1,3 +1,4 @@
+/* ===== Base page styling ===== */
 body {
   font-family: Arial, sans-serif;
   background: #0a0a0a;
@@ -6,8 +7,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
+/* Card container used on main menu + levels */
 .game-container {
   text-align: center;
   background: #1c1c1c;
@@ -15,12 +18,15 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,255,200,0.3);
   width: 90%;
-  max-width: 500px;
+  max-width: 700px; /* wider to fit honeycomb */
 }
 
 h1 {
   color: #00ffc3;
+  margin-top: 0;
 }
+
+/* ===== Inputs & buttons on levels ===== */
 
 input {
   width: 80%;
@@ -48,43 +54,17 @@ button:hover {
   margin-top: 15px;
   font-style: italic;
 }
+
+/* Cipher box styling for levels */
 .cipher-box {
   margin: 20px auto;
   padding: 15px;
   border-radius: 8px;
   background: #0a0a0a;
   border: 1px solid #00ffc3;
-.level-list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
-.level-link {
-  display: block;
-  padding: 10px 15px;
-  border-radius: 8px;
-  background: #0a0a0a;
-  border: 1px solid #00ffc3;
-  color: #f1f1f1;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.level-link:hover {
-  background: #00ffc3;
-  color: #000;
-}
-.game-container {
-  text-align: center;
-  background: #1c1c1c;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,255,200,0.3);
-  width: 90%;
-  max-width: 700px; /* a bit wider to fit the honeycomb */
-}
+/* ===== Honeycomb main menu ===== */
 
 .honeycomb {
   margin-top: 30px;
@@ -94,7 +74,7 @@ button:hover {
   gap: 20px;
 }
 
-/* Hexagon buttons */
+/* Hexagon "buttons" for each level */
 .hex-link {
   position: relative;
   width: 130px;
@@ -115,6 +95,10 @@ button:hover {
   justify-content: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   font-weight: bold;
+}
+
+.hex-link:visited {
+  color: #000;
 }
 
 .hex-link:hover {
