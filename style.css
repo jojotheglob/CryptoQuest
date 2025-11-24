@@ -55,14 +55,6 @@ button:hover {
   font-style: italic;
 }
 
-/* Cipher box styling for levels */
-.cipher-box {
-  margin: 20px auto;
-  padding: 15px;
-  border-radius: 8px;
-  background: #0a0a0a;
-  border: 1px solid #00ffc3;
-}
 
 /* ===== Honeycomb main menu ===== */
 
