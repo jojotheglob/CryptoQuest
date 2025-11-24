@@ -139,3 +139,65 @@ button:hover {
   margin-top: 4px;
   opacity: 0.8;
 }
+/* ===== Crypto Lab terminal ===== */
+
+.lab-title {
+  margin-top: 30px;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  color: #00ffc3;
+}
+
+.lab-subtitle {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.terminal {
+  margin-top: 5px;
+  margin-bottom: 8px;
+  background: #000;
+  color: #00ffc3;
+  font-family: "Consolas", "Courier New", monospace;
+  padding: 10px;
+  border-radius: 8px;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #00ffc3;
+  text-align: left;
+}
+
+.command-form {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.prompt {
+  color: #00ffc3;
+  margin-right: 8px;
+  font-family: "Consolas", "Courier New", monospace;
+}
+
+#command-input {
+  flex: 1;
+  background: #000;
+  color: #f1f1f1;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.terminal-line {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.terminal-line.user-command {
+  color: #ffffff;
+}
