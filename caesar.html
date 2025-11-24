@@ -38,6 +38,29 @@
         placeholder='Type "help" and press Enter...'
       >
     </form>
+    <!-- New: button to toggle the lab -->
+    <button id="toggle-lab" class="lab-toggle-btn" type="button">
+      Open Crypto Lab
+    </button>
+
+    <!-- New: lab wrapped in a container -->
+    <div id="lab-container" class="lab-container">
+      <h3 class="lab-title">Crypto Lab</h3>
+      <p class="lab-subtitle">
+        Use the commands below to experiment with this cipher. Type <code>help</code> to see options.
+      </p>
+      <div id="terminal" class="terminal"></div>
+
+      <form id="command-form" class="command-form">
+        <span class="prompt">&gt;</span>
+        <input
+          type="text"
+          id="command-input"
+          autocomplete="off"
+          placeholder='Type "help" and press Enter...'
+        >
+      </form>
+    </div>
   </div>
   <script src="game.js"></script>
 </body>
