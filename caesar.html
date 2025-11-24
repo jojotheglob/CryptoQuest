@@ -10,40 +10,32 @@
   <div class="game-container">
     <h1>🔐 CryptoQuest</h1>
     <h2>Level 1: Caesar Cipher</h2>
-    <p id="clue">A caesar cipher works by shifting the alphabet by a given number, then substituing the numbers in the message. Try decrypting this message (hint: it’s shifted by 3):</p>
+    <p id="clue">
+      A caesar cipher works by shifting the alphabet by a given number, then substituing the numbers in the message.
+      Try decrypting this message (hint: it’s shifted by 3):
+    </p>
     <div class="cipher-box">
       <p id="cipher">Fdhvdu flskhuv duh ixq!</p>
     </div>
+
     <input type="text" id="answer" placeholder="Type your answer...">
     <button onclick="checkAnswer('Caesar ciphers are fun!')">Submit</button>
     <p id="feedback"></p>
-    <a id = "nextChallenge" style = "visibility: hidden" href="stenography.html"> Next Challenge!</a>
-    <p style="margin-top: 20px;">
-  <a href="index.html" style="color: #00ffc3; text-decoration: underline;">
-    ⬅ Back to Main Menu
-  </a>
-</p>
-  <h3 class="lab-title">Crypto Lab</h3>
-    <p class="lab-subtitle">
-      Use the commands below to experiment with this cipher. Type <code>help</code> to see options.
-    </p>
-    <div id="terminal" class="terminal"></div>
 
-    <form id="command-form" class="command-form">
-      <span class="prompt">&gt;</span>
-      <input
-        type="text"
-        id="command-input"
-        autocomplete="off"
-        placeholder='Type "help" and press Enter...'
-      >
-    </form>
-    <!-- New: button to toggle the lab -->
+    <a id="nextChallenge" style="visibility: hidden" href="stenography.html">Next Challenge!</a>
+
+    <p style="margin-top: 20px;">
+      <a href="index.html" style="color: #00ffc3; text-decoration: underline;">
+        ⬅ Back to Main Menu
+      </a>
+    </p>
+
+    <!-- Toggle button for the lab -->
     <button id="toggle-lab" class="lab-toggle-btn" type="button">
       Open Crypto Lab
     </button>
 
-    <!-- New: lab wrapped in a container -->
+    <!-- Lab wrapped in a container (starts hidden, JS toggles .active) -->
     <div id="lab-container" class="lab-container">
       <h3 class="lab-title">Crypto Lab</h3>
       <p class="lab-subtitle">
@@ -62,6 +54,7 @@
       </form>
     </div>
   </div>
+
   <script src="game.js"></script>
 </body>
 </html>
