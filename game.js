@@ -1,4 +1,4 @@
-// Checks the answer in the answer box against a string given as a parameter.
+// ===== Answer checking for each level =====
 function checkAnswer(correctAnswer) {
   const userInput = document.getElementById("answer").value.trim();
   const feedback = document.getElementById("feedback");
@@ -24,18 +24,37 @@ function checkAnswer(correctAnswer) {
   }
 }
 
-/* ===== Crypto Lab terminal logic (used on each level) ===== */
-
+// ===== Crypto Lab: toggle + terminal logic =====
 document.addEventListener("DOMContentLoaded", () => {
+  const labContainer = document.getElementById("lab-container");
+  const toggleBtn = document.getElementById("toggle-lab");
   const terminal = document.getElementById("terminal");
   const form = document.getElementById("command-form");
   const input = document.getElementById("command-input");
 
-  // If this page doesn't have a lab, do nothing
+  // --- Toggle button for lab ---
+  if (toggleBtn && labContainer) {
+    // start hidden
+    labContainer.classList.remove("active");
+    toggleBtn.textContent = "Open Crypto Lab";
+
+    toggleBtn.addEventListener("click", () => {
+      const isActive = labContainer.classList.toggle("active");
+      toggleBtn.textContent = isActive ? "Close Crypto Lab" : "Open Crypto Lab";
+
+      // focus input when opening
+      if (isActive && input) {
+        input.focus();
+      }
+    });
+  }
+
+  // If this page doesn't have a lab, stop here
   if (!terminal || !form || !input) {
     return;
   }
 
+  // --- Terminal helper functions ---
   function printLine(text, className = "terminal-line") {
     const p = document.createElement("p");
     p.textContent = text;
@@ -71,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Try all 26 Caesar shifts (simple brute force)
   function caesarBrute(text) {
     for (let s = 0; s < 26; s++) {
-      const decrypted = caesarShift(text, -s); // try shifting backwards
+      const decrypted = caesarShift(text, -s);
       printLine(`Shift ${s}: ${decrypted}`);
     }
   }
@@ -134,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initial message when a level loads
+  // Initial message when lab is loaded
   printLine("Welcome to the Crypto Lab for this level.");
   printLine('Type "help" and press Enter to see available commands.');
   printLine("");
@@ -144,10 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const raw = input.value.trim();
     if (!raw) return;
 
-    // Echo the command
     printLine("> " + raw, "terminal-line user-command");
     handleCommand(raw);
     input.value = "";
   });
 });
-
