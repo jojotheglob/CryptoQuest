@@ -66,16 +66,16 @@ button:hover {
 
 /* ===== Honeycomb main menu ===== */
 
-/* Tight cluster in the middle */
+/* Tight little cluster in the middle */
 .honeycomb {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  column-gap: 0;   /* no gap horizontally */
-  row-gap: 0;      /* rows will overlap via negative margins */
-  max-width: 220px;
+  column-gap: 0;
+  row-gap: 0;
+  max-width: 260px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -83,7 +83,7 @@ button:hover {
 /* Hexagon "buttons" styled like dark tiles with neon edges */
 .hex-link {
   position: relative;
-  width: 100px;              /* a bit bigger for text */
+  width: 100px;
   aspect-ratio: 1 / 1;
   clip-path: polygon(
     25% 5%,
@@ -98,31 +98,35 @@ button:hover {
   justify-content: center;
   font-weight: bold;
 
-  /* Dark tile look, no visible seams */
+  /* Dark tile look, no borders so no visible seams */
   background: #272b30;
-  border: none;              /* remove black border line */
-  box-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.7);
+  border: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
 
   color: #00ffc3;
   text-decoration: none;
   text-shadow: 0 0 4px rgba(0, 255, 195, 0.5);
 
+  /* slight horizontal overlap so neighbors touch */
+  margin: 0 -8px;
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s ease;
 }
 
-/* Make hexes interlock: push every 2nd one down a bit and overlap horizontally */
-.hex-link:nth-child(odd) {
-  margin-right: -10px;      /* overlap right edge */
+/* TOP row: hex 1 & 2 (default position) */
+
+/* BOTTOM row: hex 3 & 4 — move them up into the gap and slightly left */
+.hex-link:nth-child(3),
+.hex-link:nth-child(4) {
+  margin-top: -26px; /* pulls them up so corners touch top row */
 }
 
-.hex-link:nth-child(even) {
-  margin-left: -10px;       /* overlap left edge */
-  margin-top: 28px;         /* drop row slightly to "lock" in */
+/* Nudge hex 3 horizontally so bottom row sits between 1 & 2 */
+.hex-link:nth-child(3) {
+  margin-left: 22px;
 }
 
 .hex-link:visited {
@@ -131,12 +135,9 @@ button:hover {
 
 .hex-link:hover {
   transform: scale(1.05);
-
-  /* Bright green edge + glow on hover */
   box-shadow:
     0 0 10px rgba(0, 255, 85, 0.7),
     0 4px 14px rgba(0, 0, 0, 0.9);
-
   background: radial-gradient(
       circle at 50% 120%,
       rgba(0, 255, 85, 0.45),
@@ -147,12 +148,12 @@ button:hover {
 .hex-label {
   text-align: center;
   line-height: 1.2;
-  font-size: 0.8rem;     /* a bit smaller so text fits */
+  font-size: 0.8rem;
 }
 
 .hex-label small {
   display: block;
-  font-size: 0.65rem;    /* smaller subtitle */
+  font-size: 0.65rem;
   margin-top: 4px;
   opacity: 0.8;
 }
