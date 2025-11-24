@@ -139,6 +139,7 @@ button:hover {
   margin-top: 4px;
   opacity: 0.8;
 }
+
 /* ===== Crypto Lab terminal ===== */
 
 .lab-title {
@@ -200,4 +201,19 @@ button:hover {
 
 .terminal-line.user-command {
   color: #ffffff;
+}
+
+/* Lab container is hidden by default, shown when .active is added */
+.lab-container {
+  margin-top: 15px;
+  display: none;
+}
+
+.lab-container.active {
+  display: block;
+}
+
+.lab-toggle-btn {
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
