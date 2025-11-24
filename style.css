@@ -74,14 +74,11 @@ button:hover {
   gap: 20px;
 }
 
-/* Hexagon "buttons" for each level */
+/* Hexagon "buttons" styled like dark tiles with neon edges */
 .hex-link {
   position: relative;
   width: 130px;
   aspect-ratio: 1 / 1;
-  background: #00ffc3;
-  color: #000;
-  text-decoration: none;
   clip-path: polygon(
     25% 5%,
     75% 5%,
@@ -93,18 +90,46 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   font-weight: bold;
+
+  /* Dark tile look */
+  background: #272b30;
+  border: 2px solid #111;
+  box-shadow:
+    0 0 0 1px #000,              /* crisp edge */
+    0 4px 10px rgba(0, 0, 0, 0.8);/* subtle depth */
+
+  color: #00ffc3;
+  text-decoration: none;
+  text-shadow: 0 0 4px rgba(0, 255, 195, 0.5);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .hex-link:visited {
-  color: #000;
+  color: #00ffc3;
 }
 
 .hex-link:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(0,255,200,0.6);
-  background: #00d1a4;
+  transform: scale(1.06);
+
+  /* Bright green edge + glow on hover */
+  border-color: #00ff55;
+  box-shadow:
+    0 0 0 1px #00ff55,
+    0 0 15px rgba(0, 255, 85, 0.7),
+    0 4px 18px rgba(0, 0, 0, 0.9);
+
+  /* Slight inner glow toward bottom like the reference image */
+  background: radial-gradient(
+      circle at 50% 120%,
+      rgba(0, 255, 85, 0.45),
+      #272b30 60%
+    );
 }
 
 .hex-label {
