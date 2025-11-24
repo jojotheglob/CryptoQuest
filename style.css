@@ -48,3 +48,9 @@ button:hover {
   margin-top: 15px;
   font-style: italic;
 }
+.cipher-box {
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+  background: #0a0a0a;
+  border: 1px solid #00ffc3;
