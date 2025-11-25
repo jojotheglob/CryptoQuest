@@ -1,5 +1,21 @@
+// ===== Progress tracking =====
+function updateProgress(levelNumber) {
+  if (!levelNumber) return;
+
+  const maxLevel = 4; // total number of levels
+  const key = "cq_highestUnlocked";
+
+  const current = parseInt(localStorage.getItem(key) || "1", 10);
+
+  // Only move forward, never backwards, and don't go past maxLevel
+  if (levelNumber >= current && levelNumber < maxLevel) {
+    const next = levelNumber + 1;
+    localStorage.setItem(key, String(next));
+  }
+}
+
 // ===== Answer checking for each level =====
-function checkAnswer(correctAnswer) {
+function checkAnswer(correctAnswer, levelNumber) {
   const userInput = document.getElementById("answer").value.trim();
   const feedback = document.getElementById("feedback");
   const nextLink = document.getElementById("nextChallenge");
@@ -15,6 +31,12 @@ function checkAnswer(correctAnswer) {
   if (normalize(userInput) === normalize(correctAnswer)) {
     feedback.textContent = "✅ Correct!";
     feedback.style.color = "#00ffc3";
+
+    // mark progress
+    if (typeof levelNumber === "number") {
+      updateProgress(levelNumber);
+    }
+
     if (nextLink) {
       nextLink.style.visibility = "visible";
     }
@@ -42,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const isActive = labContainer.classList.toggle("active");
       toggleBtn.textContent = isActive ? "Close Crypto Lab" : "Open Crypto Lab";
 
-      // focus input when opening
       if (isActive && input) {
         input.focus();
       }
