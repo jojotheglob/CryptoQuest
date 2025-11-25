@@ -254,4 +254,18 @@ button:hover {
 .back-link:hover {
   text-decoration: none;
 }
+.reset-btn {
+  margin-top: 20px;
+  display: inline-block;
+  background: transparent;
+  color: #00ffc3;
+  border: 1px solid #00ffc3;
+  font-size: 0.85rem;
+  padding: 8px 14px;
+}
+
+.reset-btn:hover {
+  background: #00ffc3;
+  color: #000;
+}
 
