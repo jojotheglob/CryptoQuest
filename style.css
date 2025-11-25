@@ -127,7 +127,27 @@ button:hover {
       #272b30 60%
     );
 }
+.hex-link.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  position: relative;
+}
 
+.hex-link.locked:hover {
+  opacity: 0.6;
+}
+
+/* lock icon overlay */
+.hex-link.locked::after {
+  content: "🔒";
+  position: absolute;
+  font-size: 1.8rem;
+  /* center the lock */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
 .hex-label {
   text-align: center;
   line-height: 1.2;
