@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hexes.forEach((hex) => {
     const level = parseInt(hex.dataset.level, 10);
-
     if (Number.isNaN(level)) return;
 
     if (level > highestUnlocked) {
@@ -23,4 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // Reset progress button
+  const resetBtn = document.getElementById("reset-progress");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      localStorage.removeItem(key);
+      location.reload(); // reload so menu updates to only Level 1 unlocked
+    });
+  }
 });
