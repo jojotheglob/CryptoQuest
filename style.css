@@ -217,6 +217,10 @@ button:hover {
 .lab-toggle-btn {
   margin-top: 20px;
   margin-bottom: 5px;
+  display: block;          /* put it on its own line */
+  margin-left: auto;       /* center horizontally */
+  margin-right: auto;
+}
 }
 .back-link {
   position: absolute;
