@@ -19,6 +19,7 @@ body {
   box-shadow: 0 0 15px rgba(0,255,200,0.3);
   width: 90%;
   max-width: 700px;
+  position: relative;
 }
 
 h1 {
@@ -217,3 +218,16 @@ button:hover {
   margin-top: 20px;
   margin-bottom: 5px;
 }
+.back-link {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #00ffc3;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  text-decoration: none;
+}
+
