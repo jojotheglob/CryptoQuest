@@ -19,12 +19,35 @@ body {
   box-shadow: 0 0 15px rgba(0,255,200,0.3);
   width: 90%;
   max-width: 700px;
-  position: relative;
+  position: relative;  /* needed for back-link absolute positioning */
 }
 
 h1 {
   color: #00ffc3;
   margin-top: 0;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+}
+
+/* Main clue text on each level */
+#clue {
+  max-width: 650px;
+  margin: 0 auto 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #dddddd;
+}
+
+/* Optional intro line above Crypto Lab */
+.lab-intro {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #b8b8b8;
 }
 
 /* ===== Inputs & buttons on levels ===== */
@@ -55,7 +78,6 @@ button:hover {
   margin-top: 15px;
   font-style: italic;
 }
-
 
 /* ===== Honeycomb main menu ===== */
 
@@ -127,6 +149,8 @@ button:hover {
       #272b30 60%
     );
 }
+
+/* Locked levels: dimmed + show lock icon on hover */
 .hex-link.locked {
   opacity: 0.4;
   cursor: not-allowed;
@@ -142,12 +166,12 @@ button:hover {
   content: "🔒";
   position: absolute;
   font-size: 1.8rem;
-  /* center the lock */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
 }
+
 .hex-label {
   text-align: center;
   line-height: 1.2;
@@ -241,7 +265,8 @@ button:hover {
   margin-left: auto;       /* center horizontally */
   margin-right: auto;
 }
-}
+
+/* Back-to-main link in top-left of the card */
 .back-link {
   position: absolute;
   top: 15px;
@@ -254,6 +279,8 @@ button:hover {
 .back-link:hover {
   text-decoration: none;
 }
+
+/* Reset progress button on main menu */
 .reset-btn {
   margin-top: 20px;
   display: inline-block;
@@ -268,4 +295,3 @@ button:hover {
   background: #00ffc3;
   color: #000;
 }
-
