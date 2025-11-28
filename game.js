@@ -173,6 +173,36 @@ document.addEventListener("DOMContentLoaded", () => {
         printLine('Type "help" for a list of commands.');
     }
   }
+function vigenereDecrypt(ciphertext, key) {
+  const A = "A".charCodeAt(0);
+  key = key.toUpperCase().replace(/[^A-Z]/g, "");
+  if (!key.length) return ciphertext;
+
+  let result = "";
+  let keyIndex = 0;
+
+  for (let i = 0; i < ciphertext.length; i++) {
+    const ch = ciphertext[i];
+    const code = ch.toUpperCase().charCodeAt(0);
+
+    if (code >= A && code <= A + 25) {
+      const keyShift = key.charCodeAt(keyIndex % key.length) - A;
+      const decrypted =
+        ((code - A - keyShift + 26) % 26) + A;
+
+      // preserve case
+      result += (ch === ch.toLowerCase())
+        ? String.fromCharCode(decrypted).toLowerCase()
+        : String.fromCharCode(decrypted);
+
+      keyIndex++;
+    } else {
+      result += ch; // spaces, punctuation
+    }
+  }
+
+  return result;
+}
 
   // Initial message when lab is loaded
   printLine("Welcome to the Crypto Lab for this level.");
