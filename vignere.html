@@ -14,7 +14,7 @@
     <h2>Level 3: Vigenere Cipher</h2>
 
     <p id="clue">
-      A vignere cipher is a polyalphabetic cipher, which works by assigning numbers to a keyphrase,
+      A Vigenere cipher is a polyalphabetic cipher, which works by assigning numbers to a keyphrase,
       then using a different cipher for each letter of the key phrase.
     </p>
 
@@ -23,10 +23,35 @@
     </div>
 
     <input type="text" id="answer" placeholder="Type your answer...">
-    <button onclick="checkAnswer('This is a vigenere cipher.',3)">Submit</button>
+    <button onclick="checkAnswer('This is a vigenere cipher.', 3)">Submit</button>
     <p id="feedback"></p>
 
     <a id="nextChallenge" style="visibility: hidden" href="enigma.html">Next Challenge!</a>
+
+    <!-- ===== Crypto Lab for this level ===== -->
+    <hr>
+    <h3>Crypto Lab</h3>
+    <p class="lab-hint">
+      Use the Crypto Lab to experiment with ciphers.  
+      Try commands like <code>help</code> or  
+      <code>vigenere KEY Mdwl wy e opkvgafx qotalv.</code>
+    </p>
+
+    <!-- Toggle button -->
+    <button id="toggle-lab" class="lab-toggle">Open Crypto Lab</button>
+
+    <!-- Hidden lab container (game.js shows/hides this) -->
+    <div id="lab-container" class="lab-container">
+      <div id="terminal" class="terminal"></div>
+      <form id="command-form" class="terminal-form">
+        <input
+          id="command-input"
+          type="text"
+          autocomplete="off"
+          placeholder='Type a command like "help" and press Enter...'
+        >
+      </form>
+    </div>
   </div>
 
   <script src="game.js"></script>
