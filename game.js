@@ -116,6 +116,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ----- Vigenere helper -----
+  function vigenereDecrypt(ciphertext, key) {
+    const A = "A".charCodeAt(0);
+    key = key.toUpperCase().replace(/[^A-Z]/g, "");
+    if (!key.length) return ciphertext;
+
+    let result = "";
+    let keyIndex = 0;
+
+    for (let i = 0; i < ciphertext.length; i++) {
+      const ch = ciphertext[i];
+      const code = ch.toUpperCase().charCodeAt(0);
+
+      if (code >= A && code <= A + 25) {
+        const keyShift = key.charCodeAt(keyIndex % key.length) - A;
+        const decrypted = ((code - A - keyShift + 26) % 26) + A;
+
+        // preserve case
+        result += (ch === ch.toLowerCase())
+          ? String.fromCharCode(decrypted).toLowerCase()
+          : String.fromCharCode(decrypted);
+
+        keyIndex++;
+      } else {
+        result += ch; // spaces, punctuation
+      }
+    }
+
+    return result;
+  }
+
+  // ----- Command handler -----
   function handleCommand(raw) {
     const [cmd, ...rest] = raw.trim().split(" ");
     const command = cmd.toLowerCase();
@@ -127,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         printLine("  help                   - show this help");
         printLine("  caesar-brute TEXT      - try all 26 Caesar shifts");
         printLine("  caesar-shift N TEXT    - shift TEXT by N (e.g. -3 to decrypt)");
+        printLine("  vigenere KEY TEXT      - decrypt Vigenere with KEY");
         printLine("  clear                  - clear the screen");
         break;
 
@@ -160,6 +193,23 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
       }
 
+      case "vigenere": {
+        if (!args) {
+          printLine("Usage: vigenere KEY TEXT");
+          break;
+        }
+        const firstSpace = args.indexOf(" ");
+        if (firstSpace === -1) {
+          printLine("Usage: vigenere KEY TEXT");
+          break;
+        }
+        const key = args.slice(0, firstSpace);
+        const text = args.slice(firstSpace + 1);
+        const result = vigenereDecrypt(text, key);
+        printLine(`Result: ${result}`);
+        break;
+      }
+
       case "clear":
         terminal.innerHTML = "";
         break;
@@ -173,36 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
         printLine('Type "help" for a list of commands.');
     }
   }
-function vigenereDecrypt(ciphertext, key) {
-  const A = "A".charCodeAt(0);
-  key = key.toUpperCase().replace(/[^A-Z]/g, "");
-  if (!key.length) return ciphertext;
-
-  let result = "";
-  let keyIndex = 0;
-
-  for (let i = 0; i < ciphertext.length; i++) {
-    const ch = ciphertext[i];
-    const code = ch.toUpperCase().charCodeAt(0);
-
-    if (code >= A && code <= A + 25) {
-      const keyShift = key.charCodeAt(keyIndex % key.length) - A;
-      const decrypted =
-        ((code - A - keyShift + 26) % 26) + A;
-
-      // preserve case
-      result += (ch === ch.toLowerCase())
-        ? String.fromCharCode(decrypted).toLowerCase()
-        : String.fromCharCode(decrypted);
-
-      keyIndex++;
-    } else {
-      result += ch; // spaces, punctuation
-    }
-  }
-
-  return result;
-}
 
   // Initial message when lab is loaded
   printLine("Welcome to the Crypto Lab for this level.");
