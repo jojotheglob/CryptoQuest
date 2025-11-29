@@ -81,16 +81,15 @@ button:hover {
 
 /* ===== Honeycomb main menu ===== */
 
-/* Cluster in the middle */
+/* Cluster in the middle – 3x2 grid */
 .honeycomb {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  column-gap: 8px;   /* small gap horizontally */
-  row-gap: 0;        /* we'll control vertical spacing with margin-top */
-  max-width: 260px;
+  align-items: center;
+  gap: 14px;            /* even spacing both directions */
+  max-width: 360px;     /* wide enough for 3 hexes per row */
   margin-left: auto;
   margin-right: auto;
 }
@@ -128,11 +127,7 @@ button:hover {
     background 0.2s ease;
 }
 
-/* Bottom row: nudge up a bit into the gap, but not too far */
-.hex-link:nth-child(3),
-.hex-link:nth-child(4) {
-  margin-top: -14px;   /* closer to top row, but no overlapping text */
-}
+/* (old nth-child nudge removed so rows line up evenly) */
 
 .hex-link:visited {
   color: #00ffc3;
@@ -258,7 +253,9 @@ button:hover {
   display: block;
 }
 
-.lab-toggle-btn {
+/* Style for the lab toggle button – support both class names */
+.lab-toggle-btn,
+.lab-toggle {
   margin-top: 20px;
   margin-bottom: 5px;
   display: block;          /* put it on its own line */
