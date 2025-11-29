@@ -10,16 +10,15 @@
   <div class="game-container">
     <a href="index.html" class="back-link">⬅ Back to Main Menu</a>
 
-    <h1>🔐 CryptoQuest</h1>
+    <h1> CryptoQuest</h1>
     <h2>Level 3: Columnar Transposition</h2>
 
     <p id="clue">
-      This is a <strong>columnar transposition cipher</strong>. The plaintext is written in rows,
-      then the columns are read off in a different order based on a keyword.
+      This is a <strong>columnar transposition cipher</strong>. The plaintext was written in rows
+      under the keyword <code>CIPHER</code>, then the columns were read in alphabetical order of
+      the keyword letters (C, E, H, I, P, R).
       <br><br>
-      <strong>Hint:</strong> The keyword used was <code>CIPHER</code>. Remove spaces from the message,
-      write it left-to-right under the keyword, then read the columns in alphabetical order of the letters
-      in <code>CIPHER</code>.
+      The cipher text is shown below. Your job is to figure out what the original sentence was.
     </p>
 
     <div class="cipher-box">
@@ -31,6 +30,33 @@
     <p id="feedback"></p>
 
     <a id="nextChallenge" style="visibility: hidden" href="substitution.html">Next Challenge!</a>
+
+    <hr>
+    <p class="lab-intro">
+      Tip: Open the Crypto Lab and try a command like:
+      <br>
+      <code>columnar CIPHER TONRR ELSSI HAEGE XNTPE GATXR SCSAS EXAII RNSTX POERM ERX</code>
+    </p>
+
+    <!-- Toggle button for the lab -->
+    <button id="toggle-lab" class="lab-toggle" type="button">
+      Open Crypto Lab
+    </button>
+
+    <!-- Lab wrapped in a container (hidden by default; JS toggles .active) -->
+    <div id="lab-container" class="lab-container">
+      <div id="terminal" class="terminal"></div>
+
+      <form id="command-form" class="command-form">
+        <span class="prompt">&gt;</span>
+        <input
+          id="command-input"
+          type="text"
+          autocomplete="off"
+          placeholder='Type "help" and press Enter...'
+        >
+      </form>
+    </div>
   </div>
 
   <script src="game.js"></script>
