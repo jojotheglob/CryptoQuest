@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoQuest - Level 5</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <a href="index.html" class="back-link">⬅ Back to Main Menu</a>
+
+    <h1>  CryptoQuest</h1>
+    <h2>Level 5: Columnar Transposition</h2>
+
+    <p id="clue">
+      This is a <strong>columnar transposition cipher</strong>. The plaintext is written in rows,
+      then the columns are read off in a different order based on a keyword.
+      <br><br>
+      <strong>Hint:</strong> The keyword used was <code>CIPHER</code>. Remove spaces from the message,
+      write it left-to-right under the keyword, then read the columns in alphabetical order of the letters
+      in <code>CIPHER</code>.
+    </p>
+
+    <div class="cipher-box">
+      <p id="cipher">TONRR ELSSI HAEGE XNTPE GATXR SCSAS EXAII RNSTX POERM ERX</p>
+    </div>
+
+    <input type="text" id="answer" placeholder="Type your answer...">
+    <button onclick="checkAnswer('Transposition ciphers rearrange message letters.', 5)">Submit</button>
+    <p id="feedback"></p>
+
+    <a id="nextChallenge" style="visibility: hidden" href="substitution.html">Next Challenge!</a>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
