@@ -2,7 +2,7 @@
 function updateProgress(levelNumber) {
   if (!levelNumber) return;
 
-  const maxLevel = 4; // total number of levels
+  const maxLevel = 6; // total number of levels
   const key = "cq_highestUnlocked";
 
   const current = parseInt(localStorage.getItem(key) || "1", 10);
