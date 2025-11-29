@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return result;
   }
 
-  // --- Columnar visualization helper ---
+   // --- Columnar visualization helper ---
   function printColumnarGrid(keyword, plaintext) {
     if (!keyword) {
       printLine("Cannot show grid: missing keyword.");
@@ -226,17 +226,33 @@ document.addEventListener("DOMContentLoaded", () => {
       order[p.idx] = rank + 1; // 1-based
     });
 
+    // Make labels the same width so columns line up
+    const headerLabel = "Keyword:";
+    const orderLabel = "Order:";
+    const labelWidth = headerLabel.length; // 8
+
     printLine("");
     printLine("Columnar layout (plaintext under keyword):");
-    printLine("Keyword: " + key.split("").join(" "));
-    printLine("Order:   " + order.map(n => n.toString().padStart(1, " ")).join(" "));
+    printLine(
+      headerLabel + " " + key.split("").join(" ")
+    );
+    printLine(
+      orderLabel.padEnd(labelWidth, " ") +
+      " " +
+      order.map(n => n.toString().padStart(1, " ")).join(" ")
+    );
 
     for (let r = 0; r < rows; r++) {
       const slice = cleaned.slice(r * cols, (r + 1) * cols);
-      printLine("Row " + (r + 1) + ": " + slice.split("").join(" "));
+      const rowLabel = `Row ${r + 1}:`;
+      const paddedRowLabel = rowLabel.padEnd(labelWidth, " ");
+      printLine(
+        paddedRowLabel + " " + slice.split("").join(" ")
+      );
     }
     printLine("");
   }
+
 
   // ----- Command handler -----
   function handleCommand(raw) {
