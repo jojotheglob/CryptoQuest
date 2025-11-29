@@ -209,6 +209,48 @@ document.addEventListener("DOMContentLoaded", () => {
         printLine(`Result: ${result}`);
         break;
       }
+  // ----- Columnar transposition helper -----
+  function columnarDecrypt(ciphertext, key) {
+    // remove spaces in the cipher
+    const clean = ciphertext.replace(/\s+/g, "");
+    key = key.toUpperCase().replace(/[^A-Z]/g, "");
+    const cols = key.length;
+    if (!cols) return ciphertext;
+
+    // we assume the message was padded to fill a full rectangle
+    const totalChars = clean.length;
+    const rows = Math.floor(totalChars / cols);
+
+    // Determine column order: indices sorted by key letter (stable)
+    const indices = [...Array(cols).keys()]; // [0, 1, 2, ...]
+    const sortedIndices = indices.slice().sort((a, b) => {
+      const ca = key[a];
+      const cb = key[b];
+      if (ca === cb) return a - b; // stable if same letter
+      return ca < cb ? -1 : 1;
+    });
+
+    // Each column has exactly `rows` characters (we padded the plaintext)
+    const colsData = Array.from({ length: cols }, () => Array(rows).fill(""));
+
+    let pos = 0;
+    for (const colIdx of sortedIndices) {
+      const segment = clean.slice(pos, pos + rows);
+      for (let r = 0; r < rows; r++) {
+        colsData[colIdx][r] = segment[r];
+      }
+      pos += rows;
+    }
+
+    // Read off row-by-row in the original key order (0..cols-1)
+    let result = "";
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        result += colsData[c][r] || "";
+      }
+    }
+    return result;
+  }
 
       case "clear":
         terminal.innerHTML = "";
