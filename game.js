@@ -303,27 +303,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       case "columnar": {
-  if (!args) {
-    printLine("Usage: columnar KEY CIPHERTEXT");
-    break;
-  }
-  const firstSpace = args.indexOf(" ");
-  if (firstSpace === -1) {
-    printLine("Usage: columnar KEY CIPHERTEXT");
-    break;
-  }
-  const key = args.slice(0, firstSpace);
-  const text = args.slice(firstSpace + 1);
-  const result = columnarDecrypt(text, key);
+        if (!args) {
+          printLine("Usage: columnar KEY CIPHERTEXT");
+          break;
+        }
+        const firstSpace = args.indexOf(" ");
+        if (firstSpace === -1) {
+          printLine("Usage: columnar KEY CIPHERTEXT");
+          break;
+        }
+        const key = args.slice(0, firstSpace);
+        const text = args.slice(firstSpace + 1);
+        const result = columnarDecrypt(text, key);
 
-  // show how the plaintext sits under the keyword *first*
-  printColumnarGrid(key, result);
+        // show how the plaintext sits under the keyword FIRST
+        printColumnarGrid(key, result);
 
-  // then show the final result line
-  printLine(`Result: ${result}`);
-  break;
-}
-
+        // then show the final result line
+        printLine(`Result: ${result}`);
+        break;
       }
 
       case "clear":
