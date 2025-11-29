@@ -190,6 +190,54 @@ document.addEventListener("DOMContentLoaded", () => {
     return result;
   }
 
+  // --- Columnar visualization helper ---
+  function printColumnarGrid(keyword, plaintext) {
+    if (!keyword) {
+      printLine("Cannot show grid: missing keyword.");
+      return;
+    }
+
+    const key = keyword.toUpperCase().replace(/[^A-Z]/g, "");
+    if (!key.length) {
+      printLine("Cannot show grid: keyword must have letters A-Z.");
+      return;
+    }
+
+    // Clean plaintext: letters only, uppercase
+    let cleaned = plaintext.replace(/[^A-Za-z]/g, "").toUpperCase();
+    const cols = key.length;
+    const rows = Math.ceil(cleaned.length / cols);
+
+    // Pad with X to fill rectangle
+    const totalLen = rows * cols;
+    while (cleaned.length < totalLen) {
+      cleaned += "X";
+    }
+
+    // Compute column order numbers (1..n) based on alphabetical key
+    const pairs = key.split("").map((ch, idx) => ({ ch, idx }));
+    pairs.sort((a, b) => {
+      if (a.ch === b.ch) return a.idx - b.idx;
+      return a.ch.localeCompare(b.ch);
+    });
+
+    const order = new Array(cols);
+    pairs.forEach((p, rank) => {
+      order[p.idx] = rank + 1; // 1-based
+    });
+
+    printLine("");
+    printLine("Columnar layout (plaintext under keyword):");
+    printLine("Keyword: " + key.split("").join(" "));
+    printLine("Order:   " + order.map(n => n.toString().padStart(1, " ")).join(" "));
+
+    for (let r = 0; r < rows; r++) {
+      const slice = cleaned.slice(r * cols, (r + 1) * cols);
+      printLine("Row " + (r + 1) + ": " + slice.split("").join(" "));
+    }
+    printLine("");
+  }
+
   // ----- Command handler -----
   function handleCommand(raw) {
     const [cmd, ...rest] = raw.trim().split(" ");
@@ -268,6 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const text = args.slice(firstSpace + 1);
         const result = columnarDecrypt(text, key);
         printLine(`Result: ${result}`);
+
+        // show how the plaintext sits under the keyword
+        printColumnarGrid(key, result);
         break;
       }
 
