@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoQuest - Level 6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <a href="index.html" class="back-link">⬅ Back to Main Menu</a>
+
+    <h1>  CryptoQuest</h1>
+    <h2>Level 6: Substitution Cipher</h2>
+
+    <p id="clue">
+      This is a <strong>simple substitution cipher</strong>: every letter of the alphabet is
+      consistently replaced by another letter. The pattern stays the same throughout the message.
+      <br><br>
+      <strong>Hint:</strong> Think about which letters appear most often.
+      The plaintext mentions <em>frequency analysis</em>.
+    </p>
+
+    <div class="cipher-box">
+      <p id="cipher">Dcfdrzrcrzaq wzgthld wjq fh daxbhi uzrt ylhvchqwe jqjxedzd.</p>
+    </div>
+
+    <input type="text" id="answer" placeholder="Type your answer...">
+    <button onclick="checkAnswer('Substitution ciphers can be solved with frequency analysis.', 6)">Submit</button>
+    <p id="feedback"></p>
+
+    <a id="nextChallenge" style="visibility: hidden" href="">Next Challenge!</a>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
