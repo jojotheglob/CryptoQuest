@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = Math.floor(totalChars / cols);
 
     // Determine column order: indices sorted by key letter (stable)
-    const indices = [...Array(cols).keys(); // [0, 1, 2, ...]
+    const indices = [...Array(cols).keys()]; // [0, 1, 2, ...]
     const sortedIndices = indices.slice().sort((a, b) => {
       const ca = key[a];
       const cb = key[b];
