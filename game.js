@@ -1,13 +1,10 @@
-// ===== Global progress config =====
-const CQ_MAX_LEVEL = 6;               // same value you use for maxLevel
-const CQ_PROGRESS_KEY = "cq_highestUnlocked";
-
 // ===== Progress tracking =====
 function updateProgress(levelNumber) {
   if (!levelNumber) return;
 
-  const maxLevel = CQ_MAX_LEVEL;      // total number of levels + 1 for "done"
-  const key = CQ_PROGRESS_KEY;
+  // We have 6 playable levels, so use 7 as a "done" sentinel
+  const maxLevel = 7;
+  const key = "cq_highestUnlocked";
 
   const current = parseInt(localStorage.getItem(key) || "1", 10);
 
@@ -52,22 +49,23 @@ function checkAnswer(correctAnswer, levelNumber) {
 
 // ===== Crypto Lab: toggle + terminal logic =====
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Progress bar (main menu) =====
+  // ===== Progress bar (main menu / any page with it) =====
   const progressFill = document.getElementById("progress-fill");
   const progressText = document.getElementById("progress-text");
 
   if (progressFill && progressText) {
-    // highestUnlocked stores the NEXT unlocked level
-    const highest = parseInt(localStorage.getItem(CQ_PROGRESS_KEY) || "1", 10);
-    const totalPlayable = CQ_MAX_LEVEL - 1; // e.g., if CQ_MAX_LEVEL=6, 5 playable levels
-    const completed = Math.max(0, Math.min(totalPlayable, highest - 1));
-    const percent = (completed / totalPlayable) * 100;
+    const key = "cq_highestUnlocked";
+    const totalLevels = 6; // you have 6 levels on the main menu
+
+    const highest = parseInt(localStorage.getItem(key) || "1", 10);
+    // highest stores the NEXT unlocked level, so completed = highest - 1
+    const completed = Math.max(0, Math.min(totalLevels, highest - 1));
+    const percent = (completed / totalLevels) * 100;
 
     progressFill.style.width = percent + "%";
-    progressText.textContent = `${completed} / ${totalPlayable} levels completed`;
+    progressText.textContent = `${completed} / ${totalLevels} levels completed`;
   }
 
-  // ===== Crypto Lab wiring =====
   const labContainer = document.getElementById("lab-container");
   const toggleBtn = document.getElementById("toggle-lab");
   const terminal = document.getElementById("terminal");
