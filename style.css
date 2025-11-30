@@ -292,3 +292,31 @@ button:hover {
   background: #00ffc3;
   color: #000;
 }
+.progress-section {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-bottom: 0.4rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #222222;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #444444;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #00ffc3, #00b3ff);
+  transition: width 0.4s ease;
+}
