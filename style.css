@@ -1,3 +1,4 @@
+
 /* ===== Base page styling ===== */
 body {
   font-family: Arial, sans-serif;
@@ -319,4 +320,33 @@ button:hover {
   width: 0;
   background: linear-gradient(90deg, #00ffc3, #00b3ff);
   transition: width 0.4s ease;
+}
+/* ===== Next Challenge button styling ===== */
+#nextChallenge {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 22px;
+  background: #00ffc3;              /* neon green to match h1 + accents */
+  color: #0b1020;                   /* dark text for contrast */
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 195, 0.4);
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+/* keep text color the same even after visiting */
+#nextChallenge:visited {
+  color: #0b1020;
+}
+
+#nextChallenge:hover {
+  background: #00d1a4;              /* slightly darker green on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(0, 255, 195, 0.7);
 }
