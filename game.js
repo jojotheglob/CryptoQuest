@@ -271,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
     printLine("");
   }
 
-  // ----- Command handler -----
   function handleCommand(raw) {
     const [cmd, ...rest] = raw.trim().split(" ");
     const command = cmd.toLowerCase();
