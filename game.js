@@ -347,23 +347,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const key = args.slice(0, firstSpace);
         const text = args.slice(firstSpace + 1);
         const result = columnarDecrypt(text, key);
-
-        // show how the plaintext sits under the keyword FIRST
         printColumnarGrid(key, result);
-
-        // then show the final result line
         printLine(`Result: ${result}`);
         break;
       }
-
       case "clear":
         terminal.innerHTML = "";
         break;
-
       case "":
-        // ignore empty
         break;
-
       default:
         printLine(`Unknown command: ${command}`);
         printLine('Type "help" for a list of commands.');
