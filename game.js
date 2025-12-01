@@ -30,7 +30,7 @@ function checkAnswer(correctAnswer, levelNumber) {
       .trim();
 
   if (normalize(userInput) === normalize(correctAnswer)) {
-    feedback.textContent = "✅ Correct!";
+    feedback.textContent = "Correct!";
     feedback.style.color = "#00ffc3";
 
     // mark progress
